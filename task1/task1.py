@@ -1,10 +1,15 @@
-n,m = int(input()), int(input())
 
-steps = [1]
+def main():
+    n,m = int(input()), int(input())
 
-step = m
-while step % n != 1:
-    steps.append(step%n if step%n!=0 else n)
-    step = (step + m-1)%n
+    steps = [1]
 
-print(steps)
+    step = m
+    while step % n != 1:
+        steps.append(step%n if step%n!=0 else n)
+        step = (step + m-1)%n
+
+    print(steps)
+
+if __name__ == '__main__':
+    main()

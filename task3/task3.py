@@ -15,15 +15,19 @@ def fill(test_dict:dict,values_dict:dict) -> None:
         qu.extend(example.get('values',[]))
 
 def main():
-    with open('values.json','r',encoding='utf-8') as f:
+    values_path = input()
+    test_path = input()
+    report_path = input()
+
+    with open(values_path,'r',encoding='utf-8') as f:
         results = {item['id']: item['value'] for item in json.load(f)['values']}
 
-    with open('test.json','r',encoding='utf-8') as f:
+    with open(test_path,'r',encoding='utf-8') as f:
         report = json.load(f)
 
     fill(report['tests'],results)
 
-    with open('report.json','w',encoding='utf-8') as f:
+    with open(report_path,'w',encoding='utf-8') as f:
         json.dump(report, f ,ensure_ascii = False ,indent=2)
 
 if __name__ == '__main__':
